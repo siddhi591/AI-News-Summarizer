@@ -1,0 +1,115 @@
+.trending-section {
+    margin-top: 0;
+    padding-top: 111px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.trending-section::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 700px;
+    background: radial-gradient(circle,
+            rgba(56, 189, 248, 0.25),
+            rgba(99, 102, 241, 0.2),
+            transparent 70%);
+
+    filter: blur(120px);
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+.trending-card {
+
+    position: relative;
+    z-index: 2;
+    width: 70%;
+    height: 250px;
+    padding: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-radius: 16px;
+
+    background: linear-gradient(135deg,
+            rgba(30, 41, 59, 0.8),
+            rgba(15, 23, 42, 0.8));
+
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #e6edf3;
+    transition: all 0.3s ease;
+}
+
+
+.trending-card:hover {
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    transform: translateY(-3px);
+}
+
+.trending-left {
+    max-width: 50%;
+    min-height: 85px;
+    display: flex;
+    align-items: center;
+}
+
+.trending-left h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 400;
+
+    background: linear-gradient(90deg,
+            #38bdf8,
+            #6366f1,
+            #a78bfa);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.trending-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    max-width: 45%;
+}
+
+.trending-right p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 18px;
+    max-width: 420px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.trending-arrow {
+    position: absolute;
+    bottom: 25px;
+    right: 45px;
+    font-size: 32px;
+    text-decoration: none;
+    color: white;
+    opacity: 0.7;
+    transition: all 0.2s ease;
+}
+
+.trending-arrow:hover {
+    opacity: 1;
+    transform: translateX(6px);
+}
