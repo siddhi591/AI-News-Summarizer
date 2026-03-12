@@ -1,16 +1,55 @@
-# React + Vite
+# AI News Summarizer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+AI News Summarizer is a responsive web application that fetches the latest technology news and generates concise AI-powered summaries for each article.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+(https://ai-news-summarizer-siddhi591s-projects.vercel.app/)
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* Browse latest technology news
+* AI-generated summaries for articles
+* Category filtering
+* News search functionality
+* Responsive design for mobile, tablet, and desktop
+* Light/Dark theme toggle
 
-## Expanding the ESLint configuration
+## 🛠 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* React
+* Vite
+* JavaScript
+* NewsAPI
+* Serverless Functions (API proxy)
+* Vercel deployment
+
+## 📦 Installation
+
+Clone the repository:
+
+git clone https://github.com/siddhi591/AI-News-Summarizer.git
+
+Install dependencies:
+
+npm install
+
+Run the development server:
+
+npm run dev
+
+## 🌐 Deployment
+
+The project is deployed using Vercel.
+
+Environment variable required:
+
+NEWS_API_KEY=your_newsapi_key
+
+## 📌 Future Improvements
+
+* Bookmark articles
+* Infinite scrolling
+* Loading skeletons
+* Error handling UI
+* More news categories
