@@ -10,6 +10,22 @@ function App() {
   const [articles, setArticles] = useState([]);
   const [category, setCategory] = useState("technology");
   const [searchQuery, setSearchQuery] = useState("");
+  const [theme, setTheme] = useState("dark");
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) setTheme(savedTheme);
+  }, []);
+
+  useEffect(() => {
+    document.body.classList.remove("dark", "light");
+    document.body.classList.add(theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  function toggleTheme() {
+    setTheme(theme === "dark" ? "light" : "dark");
+  }
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -33,19 +49,27 @@ function App() {
 
   return (
     <>
-      <Navbar setCategory={setCategory} setSearchQuery={setSearchQuery} />
-      <TrendingPanel articles={articles} />
-      <div className="news-container">
-        {articles.map((article, index) => (
-          <NewsCard
-            key={index}
-            title={article.title}
-            description={article.description}
-            image={article.urlToImage || "https://via.placeholder.com/400x200"}
-            url={article.url}
-            date={article.publishedAt ? new Date(article.publishedAt).toLocaleDateString() : ""}
-          />
-        ))}
+      <Navbar
+        category={category}
+        setCategory={setCategory}
+        setSearchQuery={setSearchQuery}
+        theme={theme}
+        toggleTheme={toggleTheme}
+      />
+      <div className="container">
+        <TrendingPanel articles={articles} />
+        <div className="news-container">
+          {articles.map((article, index) => (
+            <NewsCard
+              key={index}
+              title={article.title}
+              description={article.description}
+              image={article.urlToImage || "https://via.placeholder.com/400x200"}
+              url={article.url}
+              date={article.publishedAt ? new Date(article.publishedAt).toLocaleDateString() : ""}
+            />
+          ))}
+        </div>
       </div>
     </>
   );

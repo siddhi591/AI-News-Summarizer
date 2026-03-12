@@ -36,11 +36,6 @@ body,
     padding: 0;
     width: 100%;
     min-height: 100vh;
-    background-color: #050505;
-    background-image:
-        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 40px 40px;
 }
 
 body {
@@ -48,9 +43,43 @@ body {
     flex-direction: column;
 }
 
+.container {
+    max-width: 1100px;
+    width: 90%;
+    margin: 0 auto;
+}
+
 h1 {
-    font-size: 3.2em;
+    font-size: clamp(2.4rem, 4vw, 3.2rem);
     line-height: 1.1;
+}
+
+h2,
+h3 {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+p {
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
+    line-height: 1.5;
+}
+
+body.dark {
+    background-color: #0f172a;
+    color: rgba(255, 255, 255, 0.87);
+    background-image:
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+body.light {
+    background-color: #f7f9fc;
+    color: #111;
+    background-image:
+        linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
 }
 
 button {
