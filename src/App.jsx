@@ -4,7 +4,6 @@ import Navbar from './Navbar';
 import TrendingPanel from './TrendingPanel';
 import NewsCard from './NewsCard';
 
-const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
 
 function App() {
   const [articles, setArticles] = useState([]);
@@ -30,11 +29,11 @@ function App() {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        let url = `https://newsapi.org/v2/top-headlines?category=${category}&language=en&apiKey=${API_KEY}`;
-        if (searchQuery) {
-          url = `https://newsapi.org/v2/everything?q=${searchQuery}&sortBy=publishedAt&language=en&apiKey=${API_KEY}`;
-        }
-        const response = await fetch(url);
+        const params = new URLSearchParams({
+          category,
+          q: searchQuery,
+        });
+        const response = await fetch(`/api/news?${params.toString()}`);
         const data = await response.json();
         if (data.articles) {
           setArticles(data.articles);
