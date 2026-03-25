@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from './Navbar';
 import TrendingPanel from './TrendingPanel';
 import NewsCard from './NewsCard';
+import { SkeletonCard } from './Skeleton';
 
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
   const [category, setCategory] = useState("technology");
   const [searchQuery, setSearchQuery] = useState("");
   const [theme, setTheme] = useState("dark");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -28,6 +30,7 @@ function App() {
 
   useEffect(() => {
     const fetchNews = async () => {
+      setLoading(true);
       try {
         const params = new URLSearchParams({
           category,
@@ -40,6 +43,8 @@ function App() {
         }
       } catch (error) {
         console.error("Error fetching news:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -56,18 +61,24 @@ function App() {
         toggleTheme={toggleTheme}
       />
       <div className="container">
-        <TrendingPanel articles={articles} />
+        <TrendingPanel articles={articles} loading={loading} />
         <div className="news-container">
-          {articles.map((article, index) => (
-            <NewsCard
-              key={index}
-              title={article.title}
-              description={article.description}
-              image={article.urlToImage || "https://via.placeholder.com/400x200"}
-              url={article.url}
-              date={article.publishedAt ? new Date(article.publishedAt).toLocaleDateString() : ""}
-            />
-          ))}
+          {loading ? (
+            Array.from({ length: 6 }).map((_, index) => (
+              <SkeletonCard key={index} />
+            ))
+          ) : (
+            articles.map((article, index) => (
+              <NewsCard
+                key={index}
+                title={article.title}
+                description={article.description}
+                image={article.urlToImage || "https://via.placeholder.com/400x200"}
+                url={article.url}
+                date={article.publishedAt ? new Date(article.publishedAt).toLocaleDateString() : ""}
+              />
+            ))
+          )}
         </div>
       </div>
     </>

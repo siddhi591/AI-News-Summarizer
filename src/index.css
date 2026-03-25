@@ -5,7 +5,8 @@
 }
 
 :root {
-    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-family: sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-style: DM Sans, sans-serif;
     line-height: 1.5;
     font-weight: 400;
 

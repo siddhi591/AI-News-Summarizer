@@ -7,7 +7,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 60px;
+    height: 80px;
     padding: 0 20px;
     border-bottom: 1px solid #333;
     background-color: #1a1a1a;
@@ -17,14 +17,14 @@
 /* Ensure the navbar stays the same height on mobile */
 @media (max-width: 768px) {
     .navbar {
-        height: 60px;
+        height: 80px;
     }
 }
 
 .nav-left {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
 }
 
 .menu-btn {
@@ -40,17 +40,17 @@
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 }
 
 .logo-img {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 27px;
 }
 
 .logo-text {
     font-size: clamp(1.1rem, 2.5vw, 1.35rem);
-    font-weight: 600;
+    font-weight: bold;
     color: #fff;
 }
 
