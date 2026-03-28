@@ -4,13 +4,31 @@ import noImage from "./assets/noImage.png";
 
 function NewsCard({ title, description, image, url, date }) {
     const [summary, setSummary] = useState("");
+    const [showSummary, setShowSummary] = useState(false);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         setSummary("");
+        setShowSummary(false);
     }, [url]);
 
+    useEffect(() => {
+        if (!summary) {
+            return;
+        }
+
+        const timeout = window.setTimeout(() => {
+            setShowSummary(true);
+        }, 20);
+
+        return () => {
+            window.clearTimeout(timeout);
+        };
+    }, [summary]);
+
     const summarizeArticle = async () => {
+        setSummary("");
+        setShowSummary(false);
         setLoading(true);
         try {
             const apiKey = import.meta.env.VITE_GROQ_API_KEY;
@@ -66,14 +84,16 @@ function NewsCard({ title, description, image, url, date }) {
 
     return (
         <div className="news-card">
-            <img
-                src={image || noImage}
-                alt="news"
-                className="news-image"
-                onError={(e) => {
-                    e.currentTarget.src = noImage;
-                }}
-            />
+            <div className="news-image-container">
+                <img
+                    src={image || noImage}
+                    alt="news"
+                    className="news-image"
+                    onError={(e) => {
+                        e.currentTarget.src = noImage;
+                    }}
+                />
+            </div>
 
             <div className="news-content">
                 <div className="news-header">
@@ -81,7 +101,9 @@ function NewsCard({ title, description, image, url, date }) {
                     <span className="news-date">{date || ""}</span>
                 </div>
                 <p className="news-description">{description}</p>
-                {summary && <p className="summary">{summary}</p>}
+                <div className={`summary-wrapper ${showSummary ? "active" : ""}`}>
+                    {summary && <p className="summary-text">{summary}</p>}
+                </div>
 
                 <div className="card-actions">
                     <a href={url} target="_blank" className="read-more">
